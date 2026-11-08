@@ -1,0 +1,12 @@
+services:
+  api:
+    build: {context: .., dockerfile: docker/Dockerfile}
+    ports: ["8000:8000"]
+  ntcip-agent-101:
+    build: {context: .., dockerfile: docker/Dockerfile}
+    command: ["ntcip-ctrl", "agent", "--int-id", "101", "--host", "0.0.0.0", "--port", "1161"]
+    ports: ["1161:1161/udp"]
+  ntcip-agent-102:
+    build: {context: .., dockerfile: docker/Dockerfile}
+    command: ["ntcip-ctrl", "agent", "--int-id", "102", "--host", "0.0.0.0", "--port", "1161"]
+    ports: ["1162:1161/udp"]
